@@ -18,22 +18,5 @@ const personas = [
   new Persona("Sonic", new Date("1991-06-23"))
 ];
 
-function esperar(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
-async function calcularEdadesAsyncAwait(personas: Persona[]): Promise<{ nombre: string, edad: number }[]> {
-  console.log("Calculando edades...");
-  await esperar(5000);
-
-  return personas.map(persona => ({
-    nombre: persona.nombre,
-    edad: calcularEdad(persona.fechaNacimiento)
-  }));
-}
-
-(async () => {
-  const resultado = await calcularEdadesAsyncAwait(personas);
-  console.log("Resultado con async/await:", resultado);
-})();
 
