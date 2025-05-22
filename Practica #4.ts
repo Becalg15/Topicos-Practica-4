@@ -18,3 +18,18 @@ const personas = [
   new Persona("Sonic", new Date("1991-06-23"))
 ];
 
+function calcularEdadesCallback(personas: Persona[], callback: (resultado: { nombre: string, edad: number }[]) => void) {
+  console.log("Calculando edades...");
+
+  setTimeout(() => {
+    const resultado = personas.map(persona => ({
+      nombre: persona.nombre,
+      edad: calcularEdad(persona.fechaNacimiento)
+    }));
+    callback(resultado);
+  }, 5000);
+}
+
+calcularEdadesCallback(personas, resultado => {
+  console.log("Resultado con callback:", resultado);
+});
